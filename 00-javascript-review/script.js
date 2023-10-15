@@ -143,18 +143,141 @@ function getBook(id) {
     return data.find((d) => d.id === id);
 }
 
-// Desctructuring and Rest/Spread operators
+// Destructuring and Rest/Spread operators
 
 const book = getBook(2);
 const {title, author, genres} = book;
-console.log(title, author);
 
 const [primaryGenre, secondaryGenres, ...otherGenres] = genres;
-console.log(primaryGenre, secondaryGenres, otherGenres);
 
 const newGenres = [...genres, "new genre"];
 
 const updatedBook = {
     ...book,
     moviePublicationDate: "2021-01-01",
+}
+
+// Template literals
+
+const summary = `${title} by ${author} is a ${genres.length} genres book.`;
+
+// Ternary operator
+
+const hasMovie = book.hasMovieAdaptation ? "has movie" : "has no movie";
+
+// Arrow functions
+
+const getBookSummary = (book) => `${book.title} by ${book.author}`;
+
+// Short-circuiting
+
+console.log(false && "hello"); // false
+console.log(hasMovie && "has movie"); // has movie
+
+console.log("Jonas" && 'hello'); // hello
+console.log(0 && 'hello'); // 0
+console.log('' && 'hello'); // ''
+console.log(true && 'hello'); // hello
+
+console.log(true || "hello"); // true
+console.log(false || "hello"); // hello
+
+console.log(book.translations.spanish || "No translation"); // No translation
+console.log(0 || "No translation"); // No translation
+
+console.log(0 ?? "No translation"); // 0
+console.log(false ?? "No translation"); // false
+console.log("" ?? "No translation"); // ""
+console.log(null ?? "No translation"); // No translation
+console.log(undefined ?? "No translation"); // No translation
+
+// Optional chaining
+
+function getTotalReviewCount (book) {
+    return book.reviews?.goodreads?.ratingsCount ?? 0;
+}
+
+console.log(getTotalReviewCount(book)); // 11663
+console.log(getTotalReviewCount({})); // 0
+
+// Array Map Method
+
+const books = getBooks();
+const bookTitles = books.map((book) => book.title);
+const essentialBookInfo = books.map((book) => ({
+    title: book.title,
+    author: book.author,
+    genres: book.genres,
+}));
+
+// Array Filter Method
+
+const longBooks = books.filter((book) => book.pages > 500);
+const adventureBooks = books.filter((book) => book.genres.includes("adventure"));
+
+// Array Reduce Method
+
+const totalBookPages = books.reduce((total, book) => total + book.pages, 0);
+
+// Array Sort Method
+
+const sortedBooks = books.sort((a, b) => a.pages - b.pages); // ascending
+const sortedBooks2 = books.sort((a, b) => b.pages - a.pages); // descending
+
+//!! Sort Method Mutates the Original Array!!!!!!!!!!
+//!! Use Spread Operator to Create a New Array!!!!!!!!!
+
+const sortedBooks3 = [...books].sort((a, b) => a.pages - b.pages); // ascending
+const sortedBooks4 = books.slice().sort((a, b) => a.pages - b.pages); // ascending
+
+// Working with Immutable Arrays
+
+// 1) Add an element to the end of an array
+
+const newBooks = [...books, {
+    id: 6,
+    title: "The Hobbit",
+    publicationDate: "1937-09-21",
+}];
+
+// 2) Delete an element from an array
+
+const filteredBooks = books.filter((book) => book.id !== 2);
+
+// 3) Update an element in an array
+
+const updatedBooks = books.map((book) => {
+    if (book.id === 2) {
+        return {
+            ...book,
+            title: "The Cyberiad",
+        };
+    }
+    return book;
+});
+
+// Promises
+
+function getBookById(id) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const book = getBook(id);
+            if (book) {
+                resolve(book);
+            } else {
+                reject("Book not found");
+            }
+        }, 2000);
+    });
+}
+
+getBookById(2).
+    then((book) => console.log(book)).
+    catch((error) => console.log(error));
+
+// Async/Await
+
+async function getBookByIdAsync(id) {
+    const book = await getBookById(id);
+    return book;
 }
