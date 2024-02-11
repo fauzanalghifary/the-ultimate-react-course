@@ -1,6 +1,28 @@
 ## Section
 
 - [ ] Part 1: React Fundamentals
+  - [x] 1.1: Components, Props, and JSX
+  - [ ] 1.2: State, Events, and Forms
+  - [ ] 1.3: Thinking in React: State Management
+  - [ ] 1.4: Project: Eat-n-Split
 - [ ] Part 2: Intermediate React
+  - [ ] 2.1: Thinking in React: Components, Composition, and Reusability
+  - [ ] 2.2: How React Works Behind the Scenes
+  - [ ] 2.3: Effects and Data Fetching
+  - [ ] 2.4: Custom Hooks, Refs, and More State
+  - [ ] 2.5: Class-Based React
 - [ ] Part 3: Advanced React + Redux
+    - [ ] 3.1: useReducer Hooks
+    - [ ] 3.2: React Router
+    - [ ] 3.3: Context API
+    - [ ] 3.4: Performance Optimization and Advanced useEffect
+    - [ ] 3.5: Redux and Redux Toolkit
 - [ ] Part 4: Professional React Development
+  - [ ] 4.1: React Router Data Loading
+  - [ ] 4.2: Tailwind CSS
+  - [ ] 4.3: Redux and Advanced React Router
+  - [ ] 4.4: Styled Components
+  - [ ] 4.5: Supabase
+  - [ ] 4.6: React Query
+  - [ ] 4.7: Advanced React Patterns
+  - [ ] 4.8: Finish Project
